@@ -1,0 +1,378 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="OgcSolTransferExcel" this:OgcSolTransferExcel.In_Out_DtJobList="[New DataTable]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_Out_StrDirBasePathInput" Type="InArgument(x:String)" />
+    <x:Property Name="In_Out_DtJobList" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1265,3537</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>OgcSolTransferExcel_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="33">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="- Process Name : Ogc Sol Transfer Excel&#xA;- Author : Hiel.Kim&#xA;- Date : 20.10.16&#xA;- Change History :&#xA;- Description : 입력받은 파라미터를 이용하여, Excel Data를 생성합니다.&#xA;    * Input    : In_Out_StrDirBasePathInput&#xA;    * Output : " DisplayName="Ogc Sol Transfer Excel" sap:VirtualizedContainerService.HintSize="630,3472" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="StrSolRecieptEmail" />
+      <Variable x:TypeArguments="x:String" Name="StrSolVesselName" />
+      <Variable x:TypeArguments="x:String" Name="StrSolRecieptGroupEmail" />
+      <Variable x:TypeArguments="x:String" Name="StrSolRecieptGroupEmail2" />
+      <Variable x:TypeArguments="x:String" Name="StrSolRecieptGroupArea" />
+      <Variable x:TypeArguments="x:Boolean" Name="BoolChkTransformError" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Start Ogc Sol Transfer Excel_Log message" sap:VirtualizedContainerService.HintSize="588,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[ Ogc Sol Transfer Excel - Start ]&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="588,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[BoolChkTransformError]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="OGC SOL_Open Application" FileName="C:\Users\kr_rpa1\AppData\Local\Apps\2.0\RWKX7ZY9.3G4\B993ZNJR.8HA\ogc_..tion_70a40049b28fdc5b_0001.0000_f9ad5edba69cc6e1\ogc_admin.exe" sap:VirtualizedContainerService.HintSize="588,162" sap2010:WorkflowViewState.IdRef="OpenApplication_2" InformativeScreenshot="ac9969fdab1ec49e96c3fb321ba2e67b" Selector="&lt;wnd app='ogc_admin.exe' ctrlname='XtraForm1' /&gt;">
+      <ui:OpenApplication.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+        </ActivityAction>
+      </ui:OpenApplication.Body>
+    </ui:OpenApplication>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="588,2584" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[Directory.GetFiles(In_Out_StrDirBasePathInput, &quot;*.xlsx&quot;)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="DirBasePathInput" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="552,2458" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="OGC SOL Path Output_Type Into" sap:VirtualizedContainerService.HintSize="510,135" sap2010:WorkflowViewState.IdRef="TypeInto_3" SimulateType="True" Text="[In_Out_StrDirBasePathInput]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8af991cf-6600-4652-b305-1084bdf4d71a" InformativeScreenshot="319a548672d0538c2833b215d77aa7ed" Selector="&lt;wnd app='ogc_admin.exe' ctrlname='XtraForm1' /&gt;&lt;wnd ctrlname='out_box' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="OGC SOL Path Input_Type Into" sap:VirtualizedContainerService.HintSize="510,135" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="True" Text="[DirBasePathInput]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8af991cf-6600-4652-b305-1084bdf4d71a" InformativeScreenshot="5f5632e293cd4e75463ae76d30d74243" Selector="&lt;wnd app='ogc_admin.exe' ctrlname='XtraForm1' /&gt;&lt;wnd ctrlname='input_box' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:RetryScope DisplayName="OGC SOL Ok Click_Retry Scope" sap:VirtualizedContainerService.HintSize="510,282" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="OGC SOL Ok_Click" sap:VirtualizedContainerService.HintSize="334,107" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ff821be7-760d-4618-9ec2-0df6a0b16810" InformativeScreenshot="f8d1c323e4118aece539a08bd47721fb" Selector="&lt;wnd app='ogc_admin.exe' ctrlname='XtraForm1' /&gt;&lt;wnd ctrlname='button1' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:Click.Target>
+                  </ui:Click>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <ui:OnUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" ContinueOnError="True" DisplayName="Error_On Element Appear" sap:VirtualizedContainerService.HintSize="510,449" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_4" RepeatForever="False">
+              <ui:OnUiElementAppear.Body>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,272" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <WriteLine sap:VirtualizedContainerService.HintSize="434,62" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="Excel Error Complete!" />
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[BoolChkTransformError]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </ui:OnUiElementAppear.Body>
+              <ui:OnUiElementAppear.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3dfa3533-3441-49f6-a1d2-5f70f4a3398a" InformativeScreenshot="3b6c464c709ea1ca1ce68eca06bf512c" Selector="&lt;wnd app='ogc_admin.exe' cls='WindowsForms10.Window.*' title='XtraForm1' /&gt;&lt;wnd aaname='Unhandled exception*' cls='WindowsForms10.STATIC.*' title='Unhandled exception*' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
+              </ui:OnUiElementAppear.Target>
+            </ui:OnUiElementAppear>
+            <If Condition="[BoolChkTransformError]" sap:VirtualizedContainerService.HintSize="510,302" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="400,113" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw Exception="[New Exception(&quot;ExcelDataError&quot;)]" sap:VirtualizedContainerService.HintSize="358,25" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510,52" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="476,140" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="XtraForm1 Error_On Element Appear" sap:VirtualizedContainerService.HintSize="358,52" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_3" RepeatForever="False">
+                    <ui:OnUiElementAppear.Body>
+                      <Sequence sap:VirtualizedContainerService.HintSize="400,280" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <WriteLine sap:VirtualizedContainerService.HintSize="358,62" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="XtraForm Error!" />
+                        <Throw Exception="[new Exception(&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="358,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                        <ui:Break sap:VirtualizedContainerService.HintSize="358,25" sap2010:WorkflowViewState.IdRef="Break_1" />
+                      </Sequence>
+                    </ui:OnUiElementAppear.Body>
+                    <ui:OnUiElementAppear.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3dfa3533-3441-49f6-a1d2-5f70f4a3398a" InformativeScreenshot="3b6c464c709ea1ca1ce68eca06bf512c" Selector="&lt;wnd app='ogc_admin.exe' cls='WindowsForms*' title='XtraForm1' /&gt;&lt;wnd aaname='*rror*' cls='WindowsForms*' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:OnUiElementAppear.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:OnUiElementAppear>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Complete_On Element Appear" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2" RepeatForever="False">
+              <ui:OnUiElementAppear.Body>
+                <WriteLine sap:VirtualizedContainerService.HintSize="230,62" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="Excel Transform Complete!" />
+              </ui:OnUiElementAppear.Body>
+              <ui:OnUiElementAppear.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3dfa3533-3441-49f6-a1d2-5f70f4a3398a" InformativeScreenshot="724252389f3a40fb2d35acc40787acae" Selector="&lt;wnd app='ogc_admin.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='65535' title='완료' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:OnUiElementAppear.Target>
+            </ui:OnUiElementAppear>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Ok_Click" sap:VirtualizedContainerService.HintSize="510,107" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4323daa0-dee0-4c92-b448-6ffae6953a26" InformativeScreenshot="5451eafb5f881de686af05a730c3d12f" Selector="&lt;wnd app='*ogc_admin.exe*' cls='#32770' idx='*' /&gt;&lt;wnd title='OK' aaname='OK' cls='Button' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:OnUiElementVanish Body="{x:Null}" ContinueOnError="{x:Null}" WaitNotActive="{x:Null}" WaitNotVisible="{x:Null}" DisplayName="Complete_On Element Vanish" sap:VirtualizedContainerService.HintSize="510,192" sap2010:WorkflowViewState.IdRef="OnUiElementVanish_2" RepeatForever="False">
+              <ui:OnUiElementVanish.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f0240710-d61b-46a2-b390-4604d724bf45" InformativeScreenshot="724252389f3a40fb2d35acc40787acae" Selector="&lt;wnd app='ogc_admin.exe' cls='#32770' idx='*' /&gt;&lt;wnd ctrlid='65535' title='완료' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:OnUiElementVanish.Target>
+            </ui:OnUiElementVanish>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="442,169" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence sap:VirtualizedContainerService.HintSize="400,81" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ReadCell Cell="K3" DisplayName="Template SOL Email_Read Cell" sap:VirtualizedContainerService.HintSize="338,88" sap2010:WorkflowViewState.IdRef="ReadCell_11" SheetName="SOL" WorkbookPath="[DirBasePathInput]">
+                      <ui:ReadCell.Result>
+                        <OutArgument x:TypeArguments="x:String">[StrSolRecieptEmail]</OutArgument>
+                      </ui:ReadCell.Result>
+                    </ui:ReadCell>
+                    <ui:ReadCell Cell="K4" DisplayName="Template SOL GroupEmail_Read Cell" sap:VirtualizedContainerService.HintSize="338,88" sap2010:WorkflowViewState.IdRef="ReadCell_13" SheetName="SOL" WorkbookPath="[DirBasePathInput]">
+                      <ui:ReadCell.Result>
+                        <OutArgument x:TypeArguments="x:String">[StrSolRecieptGroupEmail]</OutArgument>
+                      </ui:ReadCell.Result>
+                    </ui:ReadCell>
+                    <ui:ReadCell Cell="J5" DisplayName="Template SOL GroupEmail_Read Cell" sap:VirtualizedContainerService.HintSize="338,88" sap2010:WorkflowViewState.IdRef="ReadCell_14" SheetName="RPA" WorkbookPath="[DirBasePathInput]">
+                      <ui:ReadCell.Result>
+                        <OutArgument x:TypeArguments="x:String">[StrSolRecieptGroupEmail2]</OutArgument>
+                      </ui:ReadCell.Result>
+                    </ui:ReadCell>
+                    <ui:ReadCell Cell="O4" DisplayName="Template SOL GroupEmail_Read Cell" sap:VirtualizedContainerService.HintSize="338,88" sap2010:WorkflowViewState.IdRef="ReadCell_15" SheetName="RPA" WorkbookPath="[DirBasePathInput]">
+                      <ui:ReadCell.Result>
+                        <OutArgument x:TypeArguments="x:String">[StrSolRecieptGroupArea]</OutArgument>
+                      </ui:ReadCell.Result>
+                    </ui:ReadCell>
+                    <ui:ReadCell Cell="G6" DisplayName="Template SOL Vessel_Read Cell" sap:VirtualizedContainerService.HintSize="338,88" sap2010:WorkflowViewState.IdRef="ReadCell_12" SheetName="SOL" WorkbookPath="[DirBasePathInput]">
+                      <ui:ReadCell.Result>
+                        <OutArgument x:TypeArguments="x:String">[StrSolVesselName]</OutArgument>
+                      </ui:ReadCell.Result>
+                    </ui:ReadCell>
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;DirBasePathInput,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;StrSolRecieptEmail,&#xA;StrSolRecieptGroupEmail,&#xA;&quot;&quot;,&#xA;StrSolVesselName&#xA;}]" DataTable="[In_Out_DtJobList]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,186" sap2010:WorkflowViewState.IdRef="AddDataRow_10" />
+                  </Sequence>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <Delay DisplayName="500 Milliseconds_Delay" Duration="[TimeSpan.FromMilliseconds(500)]" sap:VirtualizedContainerService.HintSize="510,25" sap2010:WorkflowViewState.IdRef="Delay_3" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:CloseApplication DisplayName="OGC SOL_Close Application" sap:VirtualizedContainerService.HintSize="588,107" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
+      <ui:CloseApplication.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="07585409-6094-421b-a4d3-baa901f43f90" InformativeScreenshot="39dd6f6f4f89ad3a116174c8f1899b20" Selector="&lt;wnd app='ogc_admin.exe' ctrlname='XtraForm1' /&gt;" WaitForReady="COMPLETE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:CloseApplication.Target>
+    </ui:CloseApplication>
+    <Delay DisplayName="500 Milliseconds_Delay" Duration="[TimeSpan.FromMilliseconds(500)]" sap:VirtualizedContainerService.HintSize="588,25" sap2010:WorkflowViewState.IdRef="Delay_4" />
+    <ui:LogMessage DisplayName="End Ogc Sol Transfer Excel_Log message" sap:VirtualizedContainerService.HintSize="512,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[ Ogc Sol Transfer Excel - End ]&quot;]" />
+  </Sequence>
+</Activity>

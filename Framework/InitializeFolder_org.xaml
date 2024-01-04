@@ -1,0 +1,315 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sma="clr-namespace:System.Management.Automation;assembly=System.Management.Automation" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_StrRobotId" Type="InArgument(x:String)" />
+    <x:Property Name="In_StrProcessName" Type="InArgument(x:String)" />
+    <x:Property Name="In_StrBasePath" Type="InArgument(x:String)" />
+    <x:Property Name="In_StrIoBasePath" Type="InArgument(x:String)" />
+    <x:Property Name="Out_DtJobList" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="Out_StrDirBasePathError" Type="OutArgument(x:String)" />
+    <x:Property Name="Out_StrDirBasePathInput" Type="OutArgument(x:String)" />
+    <x:Property Name="Out_StrDirBasePathOutput" Type="OutArgument(x:String)" />
+    <x:Property Name="Out_StrDirIoBasePathInput" Type="OutArgument(x:String)" />
+    <x:Property Name="Out_StrDirIoBasePathOutput" Type="OutArgument(x:String)" />
+    <x:Property Name="Out_StrDirIoBasePathRpa" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1281,4792</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="48">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Management.Automation</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="- Process Name : Initialize Folder&#xA;- Author : Hiel.Kim&#xA;- Date : 20.09.21&#xA;- Change History :&#xA;- Description : 입력받은 파라미터를 이용하여, 해당 폴더에 Input, Ouput, Error가 없다면, 폴더를 생성합니다.&#xA;                          BasePath의 Input 폴더의 경우는 파일이 있으면 삭제됩니다.&#xA;&#xA;    * Input    : In_StrBasePath, In_StrIoBasePath, In_StrRobotId, In_StrProcessName&#xA;    * Output : Out_StrDirBasePathError, Out_StrDirBasePathInput, Out_StrDirBasePathOutput, Out_StrDirIoBasePathInput, Out_StrDirIoBasePathOutput,&#xA;                      Out_DtJobList" DisplayName="Initialize Folder" sap:VirtualizedContainerService.HintSize="841,4627" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="BoolDirBasePathInput" />
+      <Variable x:TypeArguments="x:Boolean" Name="BoolDirBasePathOutput" />
+      <Variable x:TypeArguments="x:Boolean" Name="BoolDirIoBasePathInput" />
+      <Variable x:TypeArguments="x:Boolean" Name="BoolDirIoBasePathOutput" />
+      <Variable x:TypeArguments="x:Boolean" Name="BoolDirBasePathError" />
+      <Variable x:TypeArguments="x:Boolean" Name="BoolDirIoBasePathRpa" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Start Initialize Folder_Log message" sap:VirtualizedContainerService.HintSize="799,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[ Initialize Folder - Start ]&quot;]" />
+    <ui:BuildDataTable sap2010:Annotation.AnnotationText="Name                         - 파일명&#xA;Result_Count            - 작업대상 건수&#xA;Account - &#xA;Output_FileName    - 출력 파일명&#xA;Processing_Count    - 처리 건수&#xA;Success_Count         - 정상처리 건수&#xA;StartTime                   - 시작 시간&#xA;EndTime                    - 종료 시간" DataTable="[Out_DtJobList]" DisplayName="JobList_Build data table" sap:VirtualizedContainerService.HintSize="799,191" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Result_Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Account&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Output_FileName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Processing_Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Success_Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;StartTime&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EndTime&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:BuildDataTable>
+    <ui:MultipleAssign DisplayName="Path_Multiple Assign" sap:VirtualizedContainerService.HintSize="799,253" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Out_StrDirBasePathInput]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_StrBasePath + "\Input"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Out_StrDirBasePathOutput]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_StrBasePath + "\Output"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Out_StrDirBasePathError]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_StrBasePath + "\Error"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Out_StrDirIoBasePathInput]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_StrIoBasePath + "\" + In_StrRobotId + "\" + In_StrProcessName + "\Input"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Out_StrDirIoBasePathOutput]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_StrIoBasePath + "\" + In_StrRobotId + "\" + In_StrProcessName + "\Output"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Out_StrDirIoBasePathRpa]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_StrIoBasePath + "\" + In_StrRobotId + "\" + In_StrProcessName + "\RPA"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:PathExists Resource="{x:Null}" sap2010:Annotation.AnnotationText="Check BasePath의 Input 폴더" DisplayName="BasePath Input_Path Exists" Exists="[BoolDirBasePathInput]" sap:VirtualizedContainerService.HintSize="799,120" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[Out_StrDirBasePathInput]" PathType="Folder">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:PathExists>
+    <ui:PathExists Resource="{x:Null}" sap2010:Annotation.AnnotationText="Check BasePath의 Output 폴더" DisplayName="BasePath Output_Path Exists" Exists="[BoolDirBasePathOutput]" sap:VirtualizedContainerService.HintSize="799,120" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[Out_StrDirBasePathOutput]" PathType="Folder">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:PathExists>
+    <ui:PathExists Resource="{x:Null}" sap2010:Annotation.AnnotationText="Check BasePath의 Error 폴더" DisplayName="BasePath Error_Path Exists" Exists="[BoolDirBasePathOutput]" sap:VirtualizedContainerService.HintSize="799,120" sap2010:WorkflowViewState.IdRef="PathExists_6" Path="[Out_StrDirBasePathError]" PathType="Folder">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:PathExists>
+    <ui:PathExists Resource="{x:Null}" sap2010:Annotation.AnnotationText="Check IoBasePath의 Input 폴더" DisplayName="IoBasePath Input_Path Exists" Exists="[BoolDirIoBasePathInput]" sap:VirtualizedContainerService.HintSize="799,120" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[Out_StrDirIoBasePathInput]" PathType="Folder">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:PathExists>
+    <ui:PathExists Resource="{x:Null}" sap2010:Annotation.AnnotationText="Check IoBasePath의 Output 폴더" DisplayName="IoBasePath Output_Path Exists" Exists="[BoolDirIoBasePathOutput]" sap:VirtualizedContainerService.HintSize="799,120" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="[Out_StrDirIoBasePathOutput]" PathType="Folder">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:PathExists>
+    <ui:PathExists Resource="{x:Null}" sap2010:Annotation.AnnotationText="Check BasePath의 Output 폴더" DisplayName="BasePath Output_Path Exists" Exists="[BoolDirBasePathOutput]" sap:VirtualizedContainerService.HintSize="799,120" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[Out_StrDirBasePathOutput]" PathType="Folder">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:PathExists>
+    <ui:PathExists Resource="{x:Null}" sap2010:Annotation.AnnotationText="Check IoBasePath의 Rpa 폴더" DisplayName="IoBasePath Rpa_Path Exists" Exists="[BoolDirIoBasePathRpa]" sap:VirtualizedContainerService.HintSize="799,120" sap2010:WorkflowViewState.IdRef="PathExists_7" Path="[Out_StrDirIoBasePathRpa]" PathType="Folder">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:PathExists>
+    <WriteLine DisplayName="Path_Write Line" sap:VirtualizedContainerService.HintSize="799,64" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[&quot;BasePath_Input : &quot; + Environment.NewLine + Out_StrDirBasePathInput + Environment.NewLine +&#xA;&quot;BasePath_Output : &quot; + Environment.NewLine + Out_StrDirBasePathOutput + Environment.NewLine +&#xA;&quot;BasePath_Error : &quot; + Environment.NewLine + Out_StrDirBasePathError + Environment.NewLine +&#xA;&quot;IoBasePath_Input : &quot; + Environment.NewLine + Out_StrDirIoBasePathInput + Environment.NewLine +&#xA;&quot;IoBasePath_Output : &quot; + Environment.NewLine + Out_StrDirIoBasePathOutput + Environment.NewLine +&#xA;&quot;IoBasePath_Rpa : &quot; + Environment.NewLine + Out_StrDirIoBasePathRpa]" />
+    <If sap2010:Annotation.AnnotationText="Check BasePath의 Input 폴더&#xA;  - True   : Input 폴더의 파일을 모두 삭제&#xA;  - False  : Input 폴더 생성" Condition="[BoolDirBasePathInput]" DisplayName="BasePath Input_If" sap:VirtualizedContainerService.HintSize="799,284" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:InvokePowerShell x:TypeArguments="sma:PSObject" ContinueOnError="{x:Null}" CommandText="del" DisplayName="Delete_Invoke power shell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_3">
+          <ui:InvokePowerShell.Parameters>
+            <InArgument x:TypeArguments="x:String" x:Key="Path">[Out_StrDirBasePathInput+"\*"]</InArgument>
+          </ui:InvokePowerShell.Parameters>
+          <ui:InvokePowerShell.PowerShellVariables>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:InvokePowerShell.PowerShellVariables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokePowerShell>
+      </If.Then>
+      <If.Else>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="BasePath Input If_Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Out_StrDirBasePathInput]" />
+      </If.Else>
+    </If>
+    <If sap2010:Annotation.AnnotationText="Check BasePath의 Output 폴더&#xA;  - True   : None&#xA;  - False  : Output 폴더 생성" Condition="[BoolDirBasePathOutput]" DisplayName="BasePath Output_If" sap:VirtualizedContainerService.HintSize="799,284" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Else>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="BasePath Output If_Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[Out_StrDirBasePathOutput]" />
+      </If.Else>
+    </If>
+    <If sap2010:Annotation.AnnotationText="Check BasePath의 Output 폴더&#xA;  - True   : None&#xA;  - False  : Output 폴더 생성" Condition="[BoolDirBasePathError]" DisplayName="BasePath Output_If" sap:VirtualizedContainerService.HintSize="799,284" sap2010:WorkflowViewState.IdRef="If_5">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Else>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="BasePath Output If_Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_5" Path="[Out_StrDirBasePathError]" />
+      </If.Else>
+    </If>
+    <If sap2010:Annotation.AnnotationText="Check IoBasePath의 Input 폴더&#xA;  - True   : IoBasePath의 Input폴더의 파일들을 -&gt; BasePath의 Input 폴더로 이동 (All)&#xA;  - False  : Output 폴더 생성" Condition="[BoolDirIoBasePathInput]" DisplayName="IoBasePath Input_If" sap:VirtualizedContainerService.HintSize="799,496" sap2010:WorkflowViewState.IdRef="If_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="IoBasePath Input If_For Each" sap:VirtualizedContainerService.HintSize="420,291" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Directory.GetFiles(Out_StrDirIoBasePathInput)]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="DirIoBasePathInput" />
+              </ActivityAction.Argument>
+              <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[Out_StrDirBasePathInput + &quot;\&quot;]" DisplayName="IoBasePath Input If_Move file" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_2" Path="[DirIoBasePathInput.ToString]" />
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </If.Then>
+      <If.Else>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="IoBasePath Input If_Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_3" Path="[Out_StrDirIoBasePathInput]" />
+      </If.Else>
+    </If>
+    <If Condition="[BoolDirIoBasePathOutput]" DisplayName="IoBasePath Output_If" sap:VirtualizedContainerService.HintSize="799,227" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Else>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="IoBasePath Output If_Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[Out_StrDirIoBasePathOutput]" />
+      </If.Else>
+    </If>
+    <If Condition="[BoolDirIoBasePathRpa]" DisplayName="IoBasePath Output_If" sap:VirtualizedContainerService.HintSize="799,227" sap2010:WorkflowViewState.IdRef="If_6">
+      <If.Else>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="IoBasePath Rpa If_Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_6" Path="[Out_StrDirIoBasePathRpa]" />
+      </If.Else>
+    </If>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Ogc Sol Transfer Excel_Invoke  Workflow File" sap:VirtualizedContainerService.HintSize="799,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\OgcSolTransferExcel.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Out_StrDirBasePathInput">[Out_StrDirBasePathInput]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="799,194" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[Directory.GetFiles(Out_StrDirBasePathInput, &quot;Ex_*.xls*&quot;)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="DirBasePathInput" />
+          </ActivityAction.Argument>
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{DirBasePathInput.ToString ,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;&#xA;}]" DataTable="[Out_DtJobList]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:LogMessage DisplayName="End Initialize Folder_Log message" sap:VirtualizedContainerService.HintSize="799,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[ Initialize Folder - End ]&quot;]" />
+  </Sequence>
+</Activity>
